@@ -1,6 +1,6 @@
 @extends('Layout_user')
 @section('title')
-    Shopping Cart
+    Giỏ hàng
 @endsection
 @section('content')
     <div class="main-container col1-layout">
