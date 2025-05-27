@@ -58,7 +58,7 @@
                                  <li class="current"><a href="#">Danh sách yêu thích của tôi</a></li>
 
                                  <li><a href="#">Có thể tải xuống của tôi</a></li>
-                                 <li class="last"><a href="#">Đăng ký nhận bản tin</a></li>
+                                 <li class="last"><a href="#">Đăng ký nhận Nhận thông báo mới nhất</a></li>
                             </ul>
                         </div>
                     </div>

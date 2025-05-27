@@ -99,7 +99,7 @@ class ProductController extends Controller
                 ]);
             }else{
                 if($request->promotion_price_hidden < $request->product_price_hidden){
-                    $products = new Products();
+                    $products = Mới cập bến();
                     $gallery = new Gallery();
 
                     $products->product_name = $request->product_name;
@@ -180,7 +180,7 @@ class ProductController extends Controller
             }else{
                 return response()->json([
                     'status'=>404,
-                    'message'=>'Product Not Found',
+                    'message'=>'Không tìm thấy',
                 ]);
             }
         }
@@ -303,7 +303,7 @@ class ProductController extends Controller
         }else{
             return response()->json([
                 'status'=>404,
-                'message'=>'Product Not Found',
+                'message'=>'Không tìm thấy',
             ]);
         }
     }

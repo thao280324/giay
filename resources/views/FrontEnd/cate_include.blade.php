@@ -144,7 +144,7 @@
     @else
         <h3
             style="text-align: center; color: #eaeaea; font-weight: bold; text-shadow: 1px 1px #b3afaf, -1px -1px #cac6c6;">
-            Product Not Found</h3>
+            Không tìm thấy</h3>
     @endif
 </div>
 @if (count($categoryProduct) > 0)

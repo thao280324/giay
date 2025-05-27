@@ -46,7 +46,7 @@
                         <div class="navbar nav-menu">
                             <div class="navbar-collapse">
                                 <div class="new_title">
-                                    <h2>New Products</h2>
+                                    <h2>Mới cập bến</h2>
                                 </div>
                                 <ul class="nav navbar-nav">
                                     <li class="active"><a data-toggle="tab" href="#tab-0">All</a></li>
@@ -165,7 +165,7 @@
                                                 </ul>
                                             </div>
                                             @else
-                                            <h4 style="text-align: center; color: #777;">Product Not Found</h4>
+                                            <h4 style="text-align: center; color: #777;">Không tìm thấy</h4>
                                             @endif
                                         </div>
                                         <!-- tab product -->
@@ -280,7 +280,7 @@
                                             </div>
                                             @endforeach
                                             @else
-                                            <h4 style="text-align: center; color: #777;">Product Not Found</h4>
+                                            <h4 style="text-align: center; color: #777;">Không tìm thấy</h4>
                                             @endif
                                         </div>
 
@@ -297,7 +297,7 @@
                         <div class="slider-items-products">
                             <div class="bestsell-block">
                                 <div class="block-title">
-                                    <h2>Best Sellers</h2>
+                                    <h2>Sắp cháy hàng</h2>
                                 </div>
                                 <div id="bestsell-slider" class="product-flexslider hidden-buttons">
                                     <div class="slider-items slider-width-col4 products-grid block-content">
@@ -403,7 +403,7 @@
                     <div class="slider-items-products">
                         <div class="new-arrivals-block">
                             <div class="block-title">
-                                <h2>Featured Product</h2>
+                                <h2>Nổi bật</h2>
                             </div>
                             <div id="new-arrivals-slider" class="product-flexslider hidden-buttons">
                                 <div class="home-block-inner"> </div>
@@ -692,12 +692,12 @@
     </div>
 </section>
 
-<!-- Latest Blog -->
+<!-- Bài viết mới nhất -->
 <div class="container">
     <div class="row">
         <div class="blog-outer-container">
             <div class="block-title">
-                <h2>Latest Blog</h2>
+                <h2>Bài viết mới nhất</h2>
             </div>
             <div class="blog-inner">
                 <div class="col-lg-6 col-md-6 col-sm-6">
@@ -706,16 +706,16 @@
                                 src="{{ asset('frontend/images/blog-img3.jpg') }}" width="550px" height="255.46px"> </a>
                     </div>
                     <div class="blog-preview_info">
-                    <h4 class="blog-preview_title"><a href="blog_single_post.html">Hướng dẫn chọn mua điên thoại</a></h4>
+                    <h4 class="blog-preview_title"><a href="blog_single_post.html">Cách chọn giày thể thao</a></h4>
                          <ul class="post-meta">
                              <li><i class="fa fa-user"></i>được đăng bởi <a href="#">admin</a></li>
                              <li><i class="fa fa-comments"></i><a href="#">8 nhận xét</a></li>
                              <li><i class="fa fa-clock-o"></i><span class="day">12</span> <span
                                      class="tháng">Tháng hai</span></li>
                          </ul>
-                         <div class="blog-preview_desc">Lid est workingum dolo rumes fugats untras. Etharums ser
-                             quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers
-                             nụ cười.</div>
+                         <div class="blog-preview_desc">Khi chọn giày thể thao, bạn nên ưu tiên đôi có đệm lót êm ái.
+                             thiết kế ôm sát và độ bám tốt để bảo vệ đôi chân trong mọi buổi tập luyện.
+                             </div>
                          <a class="blog-preview_btn" href="blog_single_post.html">ĐỌC THÊM</a>
                      </div>
                  </div>
@@ -725,16 +725,16 @@
                          src="{{ asset('frontend/images/blog-img2.jpg') }}" width="550px" height="255.46px"> </a>
                      </div>
                      <div class="blog-preview_info">
-                         <h4 class="blog-preview_title"><a href="#">Top 5 samsung rẻ nhất</a></h4>
+                         <h4 class="blog-preview_title"><a href="#">Top 10 giày thể thao trending</a></h4>
                          <ul class="post-meta">
                              <li><i class="fa fa-user"></i>được đăng bởi <a href="#">admin</a></li>
                              <li><i class="fa fa-comments"></i><a href="#">4 nhận xét</a></li>
                              <li><i class="fa fa-clock-o"></i><span class="day">25</span> <span
                                      class="tháng">Tháng 1</span></li>
                          </ul>
-                         <div class="blog-preview_desc">Ut tellus dolor, dapibus eget, elementum vel, cursus
-                             tinh hoa, ưu tú. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis.
-                             Donec sit amet eros.</div>
+                         <div class="blog-preview_desc">Đôi giày da này không chỉ bền bỉ theo thời gian
+                             mà còn mang lại sự êm ái và phong cách tinh tế cho mỗi bước chân.
+                            </div>
                          <a class="blog-preview_btn" href="blog_single_post.html">ĐỌC THÊM</a>
                      </div>
                 </div>
@@ -742,6 +742,6 @@
         </div>
     </div>
 </div>
-<!-- End Latest Blog -->
+<!-- End Bài viết mới nhất -->
 
 @endsection

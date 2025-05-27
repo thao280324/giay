@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
                 slideSpeed: 500,
                 pagination: !1
             }),
-            /* Featured Products Slider */
+            /* Nổi bậts Slider */
             jQuery("#featured-slider .slider-items").owlCarousel({
                 items: 4,
                 itemsDesktop: [1024, 3],

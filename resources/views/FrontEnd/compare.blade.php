@@ -88,7 +88,7 @@
                                 @else
                                 <h3 style="text-align: center;
                                 margin-top: 15%;
-                                color: #c2c2c2;">Product Not Found</h3>
+                                color: #c2c2c2;">Không tìm thấy</h3>
                                 @endif
                             </table>
                         </div>

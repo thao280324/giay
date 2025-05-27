@@ -79,7 +79,7 @@ class CartController extends Controller
             }else{
                 $output .='
                 <tr class="first odd">
-                    <td colspan="7" style="text-align: center; font-size: 16px; color: #eaeaea; font-weight: bold; text-shadow: 1px 1px #b3afaf, -1px -1px #cac6c6;">Product Not Found</td>
+                    <td colspan="7" style="text-align: center; font-size: 16px; color: #eaeaea; font-weight: bold; text-shadow: 1px 1px #b3afaf, -1px -1px #cac6c6;">Không tìm thấy</td>
                 </tr>';
             }
             $output_2 .='

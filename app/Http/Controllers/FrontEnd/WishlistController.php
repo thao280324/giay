@@ -85,7 +85,7 @@ class WishlistController extends Controller
                 $output .='
                 <tr class="first odd">
                     <td colspan="6" style="text-align: center;font-size: 17px; color: #cec5c5;"
-                    >Product Not Found</td>
+                    >Không tìm thấy</td>
                 </tr>';
             }
 

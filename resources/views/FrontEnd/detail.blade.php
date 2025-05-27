@@ -194,7 +194,7 @@
                                         </div>
 
                                         <ul class="shipping-pro">
-                                        <li>Giao hàng miễn phí trên toàn thế giới</li>
+                                        <li>FREESHIP toàn quốc</li>
                                             <li>30 ngày đổi trả</li>
                                             <li>Giảm giá thành viên</li>
                                         </ul>

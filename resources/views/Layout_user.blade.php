@@ -137,7 +137,7 @@
                         <div class="search-box">
                             <form id="search_mini_form" action="{{ route('home.create') }}" method="get">
                                 <!-- Autocomplete End code -->
-                                <input id="search" type="text" name="search" placeholder="Search entire store here..."
+                                <input id="search" type="text" name="search" placeholder="Tìm tất cả sản phẩm..."
                                     value="" class="searchbox" maxlength="128">
                                 <button type="submit" title="Search" class="search-btn-bg" id="submit-button"></button>
                             </form>
@@ -191,7 +191,7 @@
                         <div class="mega-container visible-lg visible-md visible-sm">
                             <div class="navleft-container">
                                 <div class="mega-menu-title" id="mega-menu-title">
-                                <h3><i class="fa fa-navicon"></i> Tất cả danh mục</h3>
+                                <h3><i class="fa fa-navicon"></i> Danh mục</h3>
                                 </div>
                                 <div class="mega-menu-category" id="mega-menu-category"
                                     style="{{ $url_canonical == route('home') || $url_canonical == route('cart-address.index') ? '' : 'display: none' }}">
@@ -238,7 +238,7 @@
                                                                  <li><a href="#"><span>Nhanh
                                                                              Xem</span></a></li>
                                                                  <li><a
-                                                                         href="#"><span>Bản tin</span></a>
+                                                                         href="#"><span>Nhận thông báo mới nhất</span></a>
                                                                  </li>
                                                                  <li><a href="404error.html"><span>Lỗi 404
                                                                              Trang</span></a></li>
@@ -363,24 +363,24 @@
                             <div class="col-lg-7 col-md-9 col-xs-12 col-sm-8 offer-block">
                                 <div class="feature-box first">
                                     <div class="content">
-                                    <h3>Giao hàng miễn phí trên toàn thế giới </h3>
+                                    <h3>FREESHIP toàn quốc </h3>
                                      </div>
                                  </div>
                                  <span class="separator">/</span>
                                  <div class="feature-box">
                                      <div class="content">
-                                         <h3>Đảm bảo hoàn tiền</h3>
+                                         <h3>Chính sách hoàn tiền</h3>
                                      </div>
                                  </div>
                                  <span class="separator">/</span>
                                  <div class="feature-box last">
                                      <div class="content">
-                                         <h3>Đường dây nóng +(012) 365-6531</h3>
+                                         <h3>Hotline +(012) 365-6531</h3>
                                      </div>
                                  </div>
                              </div>
                              <div class="col-lg-2 col-md-1 col-sm-2 hidden-sm hidden-md"><span
-                                     class="offer-label">Khu vực ưu đãi</span></div>
+                                     class="offer-label">Giảm giá & Ưu đãi</span></div>
                         </div>
                     </div>
                 </div>
@@ -397,9 +397,9 @@
                             <div class="newsletter">
                                 <form>
                                     <div>
-                                    <h4><span>bản tin</span></h4>
+                                    <h4><span>Nhận thông báo mới nhất</span></h4>
                                          <input type="text" placeholder="Nhập địa chỉ email của bạn"
-                                             class="input-text" title="Đăng ký nhận bản tin của chúng tôi" id="newsletter1"
+                                             class="input-text" title="Đăng ký nhận Nhận thông báo mới nhất của chúng tôi" id="newsletter1"
                                              tên="email">
                                          <button class="đăng ký" title="Đăng ký"
                                              type="submit"><span>Đăng ký</span></button>
@@ -429,7 +429,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="footer-column pull-left">
-                            <h4>Cố vấn phong cách</h4>
+                            <h4>Dành cho khách hàng</h4>
                                  <ul class="links">
                                      <li><a href="login.html" title="Tài khoản của bạn">Tài khoản của bạn</a></li>
                                      <li><a href="#" title="Information">Thông tin</a></li>
@@ -938,7 +938,7 @@
                                             </div>
 
                                             <ul class="shipping-pro">
-                                            <li>Giao hàng miễn phí trên toàn thế giới</li> <li>Đổi trả trong 30 ngày</li> <li>Giảm giá cho thành viên</li>
+                                            <li>FREESHIP toàn quốc</li> <li>Đổi trả trong 30 ngày</li> <li>Giảm giá cho thành viên</li>
                                             </ul>
                                         </div>
                                     </form>
@@ -959,7 +959,7 @@
                 color: red !important;
             }
             .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover{
-                background-color: #1fc0a0 !important;
+                background-color: #1f2fc0 !important;
             }
             .typeahead {
                 width: 100%;

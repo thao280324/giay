@@ -258,18 +258,18 @@
     color: #fff;
     letter-spacing: 1px;
     display: inline-block;
-    border: 1px #1fc0a0 solid;
+    border: 1px #1f2fc0 solid;
     margin-top: 35px;
     float: left;
-    background: #1fc0a0;
+    background: #1f2fc0;
     font-family: 'Open Sans', sans-serif;
     border-radius: 3px;
 }
 
 .buy-btn:hover {
-    background: #1fc0a0;
+    background: #1f2fc0;
     color: #fff;
-    border: 1px #1fc0a0 solid;
+    border: 1px #1f2fc0 solid;
 }
 
 .buy-btn:hover:after {

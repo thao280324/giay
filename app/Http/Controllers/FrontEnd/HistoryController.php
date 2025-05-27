@@ -72,7 +72,7 @@ class HistoryController extends Controller
                 $output .='
                 <tr class="first odd">
                     <td colspan="3" style="text-align: center;font-size: 17px; color: #cec5c5;"
-                    >Product Not Found</td>
+                    >Không tìm thấy</td>
                 </tr>';
             }
 

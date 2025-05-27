@@ -97,7 +97,7 @@ class RemoveAllController extends Controller
             }else{
                 return response()->json([
                     'status'=>404,
-                    'message'=>'Product Not Found',
+                    'message'=>'Không tìm thấy',
                 ]);
             }
             
