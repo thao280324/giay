@@ -99,7 +99,7 @@ class ProductController extends Controller
                 ]);
             }else{
                 if($request->promotion_price_hidden < $request->product_price_hidden){
-                    $products = Mới cập bến();
+                    $products = New arrival();
                     $gallery = new Gallery();
 
                     $products->product_name = $request->product_name;

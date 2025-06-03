@@ -74,52 +74,56 @@ class AddressCartController extends Controller
     {
         $total = 0;
         $checkout_code = mt_rand();
+
         if ($request->checkout_payment == 'ATM') {
             if ($request->checkout_type_payment == 'Vnpay') {
-
+                // === TÍNH TOÁN TỔNG GIÁ TRỊ ĐƠN HÀNG ===
                 $vnp_OrderInfo = "TT Fashion Shop";
                 $vnp_OrderType = "billpayment";
-                foreach (Cart::content() as $key => $cart) {
-                    $total += ($cart->qty) * ($cart->price);
-                    if (Session::get('coupon')) {
-                        foreach (Session::get('coupon') as $key => $coun) {
-                            if ($coun['coupon_condition'] == 2) {
-                                $total_pre = $total + ($total * 0.02) - ($total * ($coun['coupon_number'] / 100));
-                                $totalPrice = $total_pre;
-                            } else {
-                                $total_coupon = ($total + ($total * 0.02)) - $copo['coupon_number'];
-                                $totalPrice = $total_coupon;
-                            }
-                        }
-                        $vnp_Amount = $totalPrice * 100;
-                    } else {
-                        $vnp_Amount = $total * 100;
-                    }
+
+                foreach (Cart::content() as $cart) {
+                    $total += $cart->qty * $cart->price;
                 }
+
+                if (Session::get('coupon')) {
+                    foreach (Session::get('coupon') as $coun) {
+                        if ($coun['coupon_condition'] == 2) {
+                            $totalPrice = $total + ($total * 0.02) - ($total * ($coun['coupon_number'] / 100));
+                        } else {
+                            $totalPrice = $total + ($total * 0.02) - $coun['coupon_number'];
+                        }
+                    }
+                    $vnp_Amount = $totalPrice * 100;
+                } else {
+                    $vnp_Amount = $total * 100;
+                }
+
+                // === THÔNG TIN THANH TOÁN ===
                 $vnp_Locale = config('app.locale');
                 $vnp_BankCode = $request->checkout_bank;
                 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
-                $name_order = $request->checkout_name;
-                $email_order = $request->checkout_email;
-                $address_order = $request->checkout_address . ',' . Wards::find($request->checkout_wards)->name_wards . ',' . District::find($request->checkout_district)->name_district . ',' . City::find($request->checkout_city)->name_city;
-                $phone_number_order = $request->checkout_phone;
-                $note_order = $request->checkout_note;
                 $code_order = $checkout_code;
-                $BankCode_order = $vnp_BankCode;
 
+                // === LƯU THÔNG TIN VÀO SESSION ===
+                $address_order = $request->checkout_address . ',' .
+                    Wards::find($request->checkout_wards)->name_wards . ',' .
+                    District::find($request->checkout_district)->name_district . ',' .
+                    City::find($request->checkout_city)->name_city;
 
-                $count_order[] = array(
-                    'name_order' => $name_order,
-                    'email_order' => $email_order,
+                $count_order[] = [
+                    'name_order' => $request->checkout_name,
+                    'email_order' => $request->checkout_email,
                     'address_order' => $address_order,
-                    'phone_number_order' => $phone_number_order,
-                    'note_order' => $note_order,
+                    'phone_number_order' => $request->checkout_phone,
+                    'note_order' => $request->checkout_note,
                     'code_order' => $code_order,
-                    'BankCode_order' => $BankCode_order,
-                );
+                    'BankCode_order' => $vnp_BankCode,
+                ];
+
                 Session::put('order_customer', $count_order);
 
-                $inputData = array(
+                // === TẠO URL THANH TOÁN VNPAY ===
+                $inputData = [
                     "vnp_Version" => "2.1.0",
                     "vnp_TmnCode" => env('VNP_TMN_CODE'),
                     "vnp_Amount" => $vnp_Amount,
@@ -132,24 +136,21 @@ class AddressCartController extends Controller
                     "vnp_OrderType" => $vnp_OrderType,
                     "vnp_ReturnUrl" => route('cart-address-vnpay.index'),
                     "vnp_TxnRef" => $checkout_code,
-                    "vnp_ExpireDate" => time() . rand(0, 100),
-                );
+                    "vnp_ExpireDate" => time() + 15 * 60,
+                ];
 
-                if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+                if (!empty($vnp_BankCode)) {
                     $inputData['vnp_BankCode'] = $vnp_BankCode;
                 }
+
                 ksort($inputData);
                 $query = "";
-                $i = 0;
                 $hashdata = "";
+                $i = 0;
                 foreach ($inputData as $key => $value) {
-                    if ($i == 1) {
-                        $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
-                    } else {
-                        $hashdata .= urlencode($key) . "=" . urlencode($value);
-                        $i = 1;
-                    }
+                    $hashdata .= ($i ? '&' : '') . urlencode($key) . "=" . urlencode($value);
                     $query .= urlencode($key) . "=" . urlencode($value) . '&';
+                    $i++;
                 }
 
                 $vnp_Url = env('VNP_URL') . "?" . $query;
@@ -159,109 +160,49 @@ class AddressCartController extends Controller
                 }
 
                 return redirect()->to($vnp_Url);
-            } else {
-                $order = new Order;
-                $order->user_id = Auth::check() ? Auth::id() : null;
-                $order->order_status = 1;
-                $order->order_review = 0;
-                $order->order_code = $checkout_code;
-                $order->save();
-
-                $customer = new Customer();
-                $customer->customer_name = Crypt::encryptString($request->checkout_name);
-
-                $full_address = $request->checkout_address . ',' .
-                    Wards::find($request->checkout_wards)->name_wards . ',' .
-                    District::find($request->checkout_district)->name_district . ',' .
-                    City::find($request->checkout_city)->name_city;
-
-                $customer->customer_address = Crypt::encryptString($full_address);
-                $customer->customer_phone = Crypt::encryptString($request->checkout_phone);
-                $customer->customer_email = Crypt::encryptString($request->checkout_email);
-                $customer->customer_note = Crypt::encryptString($request->checkout_note);
-                $customer->customer_pay = 'ATM-PAYPAL'; // hoặc $request->checkout_payment
-                $customer->customer_code = $checkout_code;
-                $customer->save();
-                Mail::to(Crypt::decryptString($customer->customer_email))->send(new OrderSuccessMail($customer, $checkout_code));
-
-
-                if (Session::get('cart') == true) {
-                    foreach (Cart::content() as  $cart) {
-                        $order_details = new OrderDetail;
-                        $order_details->order_code = $checkout_code;
-                        $order_details->pro_id  = $cart->id;
-                        $order_details->order_de_price = $cart->price;
-                        $order_details->order_de_qty = $cart->qty;
-                        $order_details->order_review = 0;
-                        if (Session::get('coupon')) {
-                            foreach (Session::get('coupon') as $cou) {
-                                $order_details->order_de_coupon =  $cou['coupon_code'];
-                            }
-                        } else {
-                            $order_details->order_de_coupon =  'no';
-                        }
-                        $order_details->save();
-                    }
-                }
-                if (Session::get('coupon')) {
-                    foreach (Session::get('coupon') as $coun) {
-                        $coupon_qty = Coupon::where('coupon_code', $coun['coupon_code'])->first();
-                        $coupon_qty->coupon_used = Auth::check() ? ',' . Auth::id() : ',guest';
-                        $coupon_qty->coupon_qty--;
-                        $coupon_qty->save();
-                    }
-                }
-                Session::forget('cart');
-                Session::forget('coupon');
-
-                return response()->json([
-                    'status' => 200,
-                    'message' => 'Order Successfully'
-                ]);
             }
-        } else {
-            $order = new Order;
-            $order->user_id  = Auth::id();
+
+            // ================================
+            // = ĐẶT HÀNG KHÔNG DÙNG VNPAY    =
+            // ================================
+            $order = new Order();
+            $order->user_id = Auth::check() ? Auth::id() : null;
             $order->order_status = 1;
             $order->order_review = 0;
             $order->order_code = $checkout_code;
             $order->save();
 
-            $customer = new Customer();
-            $customer->customer_name = Crypt::encryptString($request->checkout_name);
-
-            $full_address = $request->checkout_address . ',' .
+            $address = $request->checkout_address . ',' .
                 Wards::find($request->checkout_wards)->name_wards . ',' .
                 District::find($request->checkout_district)->name_district . ',' .
                 City::find($request->checkout_city)->name_city;
 
-            $customer->customer_address = Crypt::encryptString($full_address);
+            $customer = new Customer();
+            $customer->customer_name = Crypt::encryptString($request->checkout_name);
+            $customer->customer_address = Crypt::encryptString($address);
             $customer->customer_phone = Crypt::encryptString($request->checkout_phone);
             $customer->customer_email = Crypt::encryptString($request->checkout_email);
             $customer->customer_note = Crypt::encryptString($request->checkout_note);
-            $customer->customer_pay = 'ATM-PAYPAL'; // hoặc $request->checkout_payment
+            $customer->customer_pay = 'ATM-PAYPAL';
             $customer->customer_code = $checkout_code;
             $customer->save();
-            Mail::to(Crypt::decryptString($customer->customer_email))->send(new OrderSuccessMail($customer, $checkout_code));
 
-            if (Session::get('cart') == true) {
-                foreach (Cart::content() as  $cart) {
-                    $order_details = new OrderDetail;
+            Mail::to(Crypt::decryptString($customer->customer_email))
+                ->send(new OrderSuccessMail($customer, $checkout_code));
+
+            if (Session::get('cart')) {
+                foreach (Cart::content() as $cart) {
+                    $order_details = new OrderDetail();
                     $order_details->order_code = $checkout_code;
-                    $order_details->pro_id  = $cart->id;
+                    $order_details->pro_id = $cart->id;
                     $order_details->order_de_price = $cart->price;
                     $order_details->order_de_qty = $cart->qty;
                     $order_details->order_review = 0;
-                    if (Session::get('coupon')) {
-                        foreach (Session::get('coupon') as $cou) {
-                            $order_details->order_de_coupon =  $cou['coupon_code'];
-                        }
-                    } else {
-                        $order_details->order_de_coupon =  'no';
-                    }
+                    $order_details->order_de_coupon = Session::get('coupon')[0]['coupon_code'] ?? 'no';
                     $order_details->save();
                 }
             }
+
             if (Session::get('coupon')) {
                 foreach (Session::get('coupon') as $coun) {
                     $coupon_qty = Coupon::where('coupon_code', $coun['coupon_code'])->first();
@@ -270,12 +211,69 @@ class AddressCartController extends Controller
                     $coupon_qty->save();
                 }
             }
+
             Session::forget('cart');
             Session::forget('coupon');
 
-            return redirect()->route('home')->with('message', 'Order Successfully');
+            return redirect()->route('home')->with('message', 'Đặt hàng thành công!');
         }
+
+        // ========================
+        // = THANH TOÁN KHÁC (COD)=
+        // ========================
+        $order = new Order();
+        $order->user_id = Auth::id();
+        $order->order_status = 1;
+        $order->order_review = 0;
+        $order->order_code = $checkout_code;
+        $order->save();
+
+        $address = $request->checkout_address . ',' .
+            Wards::find($request->checkout_wards)->name_wards . ',' .
+            District::find($request->checkout_district)->name_district . ',' .
+            City::find($request->checkout_city)->name_city;
+
+        $customer = new Customer();
+        $customer->customer_name = Crypt::encryptString($request->checkout_name);
+        $customer->customer_address = Crypt::encryptString($address);
+        $customer->customer_phone = Crypt::encryptString($request->checkout_phone);
+        $customer->customer_email = Crypt::encryptString($request->checkout_email);
+        $customer->customer_note = Crypt::encryptString($request->checkout_note);
+        $customer->customer_pay = $request->checkout_payment;
+        $customer->customer_code = $checkout_code;
+        $customer->save();
+
+        Mail::to(Crypt::decryptString($customer->customer_email))
+            ->send(new OrderSuccessMail($customer, $checkout_code));
+
+        if (Session::get('cart')) {
+            foreach (Cart::content() as $cart) {
+                $order_details = new OrderDetail();
+                $order_details->order_code = $checkout_code;
+                $order_details->pro_id = $cart->id;
+                $order_details->order_de_price = $cart->price;
+                $order_details->order_de_qty = $cart->qty;
+                $order_details->order_review = 0;
+                $order_details->order_de_coupon = Session::get('coupon')[0]['coupon_code'] ?? 'no';
+                $order_details->save();
+            }
+        }
+
+        if (Session::get('coupon')) {
+            foreach (Session::get('coupon') as $coun) {
+                $coupon_qty = Coupon::where('coupon_code', $coun['coupon_code'])->first();
+                $coupon_qty->coupon_used = Auth::check() ? ',' . Auth::id() : ',guest';
+                $coupon_qty->coupon_qty--;
+                $coupon_qty->save();
+            }
+        }
+
+        Session::forget('cart');
+        Session::forget('coupon');
+
+        return redirect()->route('home')->with('message', 'Đặt hàng thành công!');
     }
+
 
     /**
      * Display the specified resource.

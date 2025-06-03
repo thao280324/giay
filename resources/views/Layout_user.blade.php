@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicons Icon -->
-    
+
     <title>Giay - @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Mobile Specific -->
@@ -37,6 +37,12 @@
 <body class="cms-index-index cms-home-page">
     <div id="page">
         <!-- Header -->
+         @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+        @endif
+
         <header>
             <div class="header-container">
                 <div class="container">
@@ -82,10 +88,10 @@
                             <div class="toplinks">
                                 <div class="links">
                                     @if (Auth::user())
-                                        <div class="myaccount">
-                                            <a title="My Account" href=""><span class="hidden-xs">My
-                                                    Account</span></a>
-                                        </div>
+                                    <div class="myaccount">
+                                        <a title="My Account" href=""><span class="hidden-xs">My
+                                                Account</span></a>
+                                    </div>
                                     @endif
                                     <div class="demo"><a title="Blog" href=""><span
                                                 class="hidden-xs">Blog</span></a> </div>
@@ -107,13 +113,13 @@
                                     <!-- End Header Company -->
                                     <div class="login">
                                         @if (!Auth::user())
-                                            <a href="{{ route('login.index') }}">
-                                                <span class="hidden-xs">Log In</span>
-                                            </a>
+                                        <a href="{{ route('login.index') }}">
+                                            <span class="hidden-xs">Log In</span>
+                                        </a>
                                         @else
-                                            <a href="{{ route('logout.index') }}">
-                                                <span class="hidden-xs">Log Out</span>
-                                            </a>
+                                        <a href="{{ route('logout.index') }}">
+                                            <span class="hidden-xs">Log Out</span>
+                                        </a>
                                         @endif
                                     </div>
                                 </div>
@@ -165,11 +171,11 @@
                                         <div class="actions">
                                             <button class="btn-checkout" title="Checkout" type="button">
                                                 @if (Auth::user())
-                                                    <a style="color: #fff;"
-                                                        href="{{ route('cart-address.index') }}"><span>Checkout</span></a>
+                                                <a style="color: #fff;"
+                                                    href="{{ route('cart-address.index') }}"><span>Checkout</span></a>
                                                 @else
-                                                    <a style="color: #fff;"
-                                                        href="{{ route('login.index') }}"><span>Checkout</span></a>
+                                                <a style="color: #fff;"
+                                                    href="{{ route('login.index') }}"><span>Checkout</span></a>
                                                 @endif
                                             </button>
                                             <a href="{{ route('cart.index') }}" class="view-cart"><span>View
@@ -191,57 +197,57 @@
                         <div class="mega-container visible-lg visible-md visible-sm">
                             <div class="navleft-container">
                                 <div class="mega-menu-title" id="mega-menu-title">
-                                <h3><i class="fa fa-navicon"></i> Danh mục</h3>
+                                    <h3><i class="fa fa-navicon"></i> Danh mục</h3>
                                 </div>
                                 <div class="mega-menu-category" id="mega-menu-category"
                                     style="{{ $url_canonical == route('home') || $url_canonical == route('cart-address.index') ? '' : 'display: none' }}">
                                     <ul class="nav">
                                         <li class="nosub"><a href="{{ route('home') }}"><i
-                                        class="fa fa-home"></i> Trang chủ</a>
-                                         </li>
-                                         <li><a href="#"><i class="fa fa-file-text"></i> Trang</a>
-                                             <div class="wrap-popup">
-                                                 <div class="popup">
-                                                     <div class="row">
-                                                         <div class="col-sm-6">
-                                                             <ul class="nav">
-                                                                 <li><a href="#"><span>Lưới</span></a></li>
-                                                                 <li>
-                                                                     <a href="#"> <span>Danh sách</span></a>
-                                                                 </li>
-                                                                 <li>
-                                                                     <a href="#"> <span>Sản phẩm
-                                                                             Chi tiết</span></a>
-                                                                 </li>
-                                                                 <li>
-                                                                     <a href="#"> <span>Mua sắm
-                                                                             Giỏ hàng</span></a>
-                                                                 </li>
-                                                                 <li><a href="#"><span>Thanh toán</span></a>
-                                                                 </li>
-                                                                 <li>
-                                                                     <a href="wishlist.html"> <span>Danh sách yêu thích</span></a>
-                                                                 </li>
-                                                             </ul>
-                                                         </div>
-                                                         <div class="col-sm-6 has-sep">
-                                                             <ul class="nav">
-                                                                 <li>
-                                                                     <a href="dashboard.html"> <span>Trang tổng quan</span>
-                                                                     </a>
-                                                                 </li>
-                                                                 <li>
-                                                                     <a href="multiple_addresses.html"> <span>Nhiều
-                                                                             Địa chỉ</span></a>
-                                                                 </li>
-                                                                 <li><a href="#"><span>So sánh</span></a></li>
-                                                                 <li><a href="#"><span>Nhanh
-                                                                             Xem</span></a></li>
-                                                                 <li><a
-                                                                         href="#"><span>Nhận thông báo mới nhất</span></a>
-                                                                 </li>
-                                                                 <li><a href="404error.html"><span>Lỗi 404
-                                                                             Trang</span></a></li>
+                                                    class="fa fa-home"></i> Trang chủ</a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-file-text"></i> Trang</a>
+                                            <div class="wrap-popup">
+                                                <div class="popup">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <ul class="nav">
+                                                                <li><a href="#"><span>Lưới</span></a></li>
+                                                                <li>
+                                                                    <a href="#"> <span>Danh sách</span></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#"> <span>Sản phẩm
+                                                                            Chi tiết</span></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#"> <span>Mua sắm
+                                                                            Giỏ hàng</span></a>
+                                                                </li>
+                                                                <li><a href="#"><span>Thanh toán</span></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="wishlist.html"> <span>Danh sách yêu thích</span></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-sm-6 has-sep">
+                                                            <ul class="nav">
+                                                                <li>
+                                                                    <a href="dashboard.html"> <span>Trang tổng quan</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="multiple_addresses.html"> <span>Nhiều
+                                                                            Địa chỉ</span></a>
+                                                                </li>
+                                                                <li><a href="#"><span>So sánh</span></a></li>
+                                                                <li><a href="#"><span>Nhanh
+                                                                            Xem</span></a></li>
+                                                                <li><a
+                                                                        href="#"><span>Nhận thông báo mới nhất</span></a>
+                                                                </li>
+                                                                <li><a href="404error.html"><span>Lỗi 404
+                                                                            Trang</span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -249,108 +255,109 @@
                                             </div>
                                         </li>
                                         @foreach ($all_category as $all_cate)
-                                            @php
-                                                $childrencate = App\Category::where('category_sub', $all_cate->category_id)
-                                                    ->where('category_status', 1)
-                                                    ->orderBy('category_sorting', 'asc')
-                                                    ->take(2)
-                                                    ->get();
-                                                $childrencate2 = App\Category::where('category_sub', $all_cate->category_id)
-                                                    ->where('category_status', 1)
-                                                    ->orderBy('category_sorting', 'asc')
-                                                    ->skip(2)
-                                                    ->take(2)
-                                                    ->get();
-                                            @endphp
-                                            <li class="{{ count($childrencate) > 0 ? '' : 'nosub' }}">
-                                                <a
-                                                    href="{{ route('category-product.show', $all_cate->category_slug) }}"><i
-                                                        class="{{ $all_cate->category_icon }}"></i>
-                                                    {{ $all_cate->category_name }}</a>
-                                                @if (count($childrencate) > 0)
-                                                    <div class="wrap-popup">
-                                                        <div class="popup">
-                                                            <div class="row">
-                                                                <div class="col-md-4 col-sm-6">
-                                                                    @foreach ($childrencate as $item)
-                                                                        @php
-                                                                            $childcate = App\Category::where('category_sub', $item->category_id)
-                                                                                ->where('category_status', 1)
-                                                                                ->orderBy('category_sorting', 'asc')
-                                                                                ->take(4)
-                                                                                ->get();
-                                                                        @endphp
-                                                                        <h3>{{ $item->category_name }}</h3>
-                                                                        <ul class="nav">
-                                                                            @foreach ($childcate as $child)
-                                                                                <li>
-                                                                                    <a
-                                                                                        href="{{ route('category-product.show', $child->category_slug) }}">
-                                                                                        <span>{{ $child->category_name }}</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                        <br>
-                                                                    @endforeach
-                                                                </div>
-                                                                <div class="col-md-4 col-sm-6 has-sep">
-                                                                    @foreach ($childrencate2 as $item)
-                                                                        @php
-                                                                            $childcate = App\Category::where('category_sub', $item->category_id)
-                                                                                ->where('category_status', 1)
-                                                                                ->orderBy('category_sorting', 'asc')
-                                                                                ->take(4)
-                                                                                ->get();
-                                                                        @endphp
-                                                                        <h3>{{ $item->category_name }}</h3>
-                                                                        <ul class="nav">
-                                                                            @foreach ($childcate as $child)
-                                                                                <li>
-                                                                                    <a
-                                                                                        href="{{ route('category-product.show', $child->category_slug) }}">
-                                                                                        <span>{{ $child->category_name }}</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                        <br>
-                                                                    @endforeach
-                                                                </div>
-                                                                <div class="col-md-4 has-sep hidden-sm">
-                                                                    <div class="custom-menu-right">
-                                                                        <div class="box-banner media">
-                                                                            <div class="add-desc">
-                                                                                <h3>Glass<br>
-                                                                                    collection
-                                                                                </h3>
-                                                                                <div class="price-sale">
-                                                                                    {{ now()->format('Y') }}</div>
-                                                                                <a href="#">Shopping Now</a>
-                                                                            </div>
-                                                                            <div class="add-right"><img
-                                                                                    src="{{ asset('frontend/images/menu-img2.jpg') }}"
-                                                                                    alt=""></div>
+                                        @php
+                                        $childrencate = App\Category::where('category_sub', $all_cate->category_id)
+                                        ->where('category_status', 1)
+                                        ->orderBy('category_sorting', 'asc')
+                                        ->take(2)
+                                        ->get();
+                                        $childrencate2 = App\Category::where('category_sub', $all_cate->category_id)
+                                        ->where('category_status', 1)
+                                        ->orderBy('category_sorting', 'asc')
+                                        ->skip(2)
+                                        ->take(2)
+                                        ->get();
+                                        @endphp
+                                        <li class="{{ count($childrencate) > 0 ? '' : 'nosub' }}">
+                                            <a
+                                                href="{{ route('category-product.show', $all_cate->category_slug) }}"><i
+                                                    class="{{ $all_cate->category_icon }}"></i>
+                                                {{ $all_cate->category_name }}</a>
+                                            @if (count($childrencate) > 0)
+                                            <div class="wrap-popup">
+                                                <div class="popup">
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-sm-6">
+                                                            @foreach ($childrencate as $item)
+                                                            @php
+                                                            $childcate = App\Category::where('category_sub', $item->category_id)
+                                                            ->where('category_status', 1)
+                                                            ->orderBy('category_sorting', 'asc')
+                                                            ->take(4)
+                                                            ->get();
+                                                            @endphp
+                                                            <h3>{{ $item->category_name }}</h3>
+                                                            <ul class="nav">
+                                                                @foreach ($childcate as $child)
+                                                                <li>
+                                                                    <a
+                                                                        href="{{ route('category-product.show', $child->category_slug) }}">
+                                                                        <span>{{ $child->category_name }}</span>
+                                                                    </a>
+                                                                </li>
+                                                                @endforeach
+                                                            </ul>
+                                                            <br>
+                                                            @endforeach
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-6 has-sep">
+                                                            @foreach ($childrencate2 as $item)
+                                                            @php
+                                                            $childcate = App\Category::where('category_sub', $item->category_id)
+                                                            ->where('category_status', 1)
+                                                            ->orderBy('category_sorting', 'asc')
+                                                            ->take(4)
+                                                            ->get();
+                                                            @endphp
+                                                            <h3>{{ $item->category_name }}</h3>
+                                                            <ul class="nav">
+                                                                @foreach ($childcate as $child)
+                                                                <li>
+                                                                    <a
+                                                                        href="{{ route('category-product.show', $child->category_slug) }}">
+                                                                        <span>{{ $child->category_name }}</span>
+                                                                    </a>
+                                                                </li>
+                                                                @endforeach
+                                                            </ul>
+                                                            <br>
+                                                            @endforeach
+                                                        </div>
+                                                        <div class="col-md-4 has-sep hidden-sm">
+                                                            <div class="custom-menu-right">
+                                                                <div class="box-banner media">
+                                                                    <div class="add-desc">
+                                                                        <h3>Glass<br>
+                                                                            collection
+                                                                        </h3>
+                                                                        <div class="price-sale">
+                                                                            {{ now()->format('Y') }}
                                                                         </div>
-                                                                        <div class="box-banner media">
-                                                                            <div class="add-desc">
-                                                                            <h3>Tiết kiệm tối đa</h3>
-                                                                                 <div class="price-sale">70
-                                                                                     <sup>%</sup><sub>tắt</sub>
-                                                                                 </div>
-                                                                                 <a href="#">Mua sắm ngay bây giờ</a>
-                                                                            </div>
-                                                                            <div class="add-right"><img
-                                                                                    src="{{ asset('frontend/images/menu-img3.jpg') }}"
-                                                                                    alt=""></div>
-                                                                        </div>
+                                                                        <a href="#">Shopping Now</a>
                                                                     </div>
+                                                                    <div class="add-right"><img
+                                                                            src="{{ asset('frontend/images/menu-img2.jpg') }}"
+                                                                            alt=""></div>
+                                                                </div>
+                                                                <div class="box-banner media">
+                                                                    <div class="add-desc">
+                                                                        <h3>Tiết kiệm tối đa</h3>
+                                                                        <div class="price-sale">70
+                                                                            <sup>%</sup><sub>tắt</sub>
+                                                                        </div>
+                                                                        <a href="#">Mua sắm ngay bây giờ</a>
+                                                                    </div>
+                                                                    <div class="add-right"><img
+                                                                            src="{{ asset('frontend/images/menu-img3.jpg') }}"
+                                                                            alt=""></div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endif
-                                            </li>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -363,24 +370,24 @@
                             <div class="col-lg-7 col-md-9 col-xs-12 col-sm-8 offer-block">
                                 <div class="feature-box first">
                                     <div class="content">
-                                    <h3>FREESHIP toàn quốc </h3>
-                                     </div>
-                                 </div>
-                                 <span class="separator">/</span>
-                                 <div class="feature-box">
-                                     <div class="content">
-                                         <h3>Chính sách hoàn tiền</h3>
-                                     </div>
-                                 </div>
-                                 <span class="separator">/</span>
-                                 <div class="feature-box last">
-                                     <div class="content">
-                                         <h3>Hotline +(012) 365-6531</h3>
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="col-lg-2 col-md-1 col-sm-2 hidden-sm hidden-md"><span
-                                     class="offer-label">Giảm giá & Ưu đãi</span></div>
+                                        <h3>FREESHIP toàn quốc </h3>
+                                    </div>
+                                </div>
+                                <span class="separator">/</span>
+                                <div class="feature-box">
+                                    <div class="content">
+                                        <h3>Chính sách hoàn tiền</h3>
+                                    </div>
+                                </div>
+                                <span class="separator">/</span>
+                                <div class="feature-box last">
+                                    <div class="content">
+                                        <h3>Hotline +(012) 365-6531</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-1 col-sm-2 hidden-sm hidden-md"><span
+                                    class="offer-label">Giảm giá & Ưu đãi</span></div>
                         </div>
                     </div>
                 </div>
@@ -397,12 +404,12 @@
                             <div class="newsletter">
                                 <form>
                                     <div>
-                                    <h4><span>Nhận thông báo mới nhất</span></h4>
-                                         <input type="text" placeholder="Nhập địa chỉ email của bạn"
-                                             class="input-text" title="Đăng ký nhận Nhận thông báo mới nhất của chúng tôi" id="newsletter1"
-                                             tên="email">
-                                         <button class="đăng ký" title="Đăng ký"
-                                             type="submit"><span>Đăng ký</span></button>
+                                        <h4><span>Nhận thông báo mới nhất</span></h4>
+                                        <input type="text" placeholder="Nhập địa chỉ email của bạn"
+                                            class="input-text" title="Đăng ký nhận Nhận thông báo mới nhất của chúng tôi" id="newsletter1"
+                                            tên="email">
+                                        <button class="đăng ký" title="Đăng ký"
+                                            type="submit"><span>Đăng ký</span></button>
                                     </div>
                                 </form>
                             </div>
@@ -416,55 +423,55 @@
                     <div class="row">
                         <div class="col-md-3 col-sm-6">
                             <div class="footer-column pull-left">
-                            <h4>Hướng dẫn mua sắm</h4>
-                                 <ul class="links">
-                                     <li><a href="blog.html" title="Cách mua">Blog</a></li>
-                                     <li><a href="faq.html" title="FAQs">Câu hỏi thường gặp</a></li>
-                                     <li><a href="#" title="Thanh toán">Thanh toán</a></li>
-                                     <li><a href="#" title="Shipment">Chuyến hàng</a></li>
-                                     <li><a href="#" title="Đơn hàng của tôi ở đâu?">Đơn hàng của tôi ở đâu?</a></li>
-                                     <li><a href="#" title="Chính sách hoàn trả">Chính sách hoàn trả</a></li>
+                                <h4>Hướng dẫn mua sắm</h4>
+                                <ul class="links">
+                                    <li><a href="blog.html" title="Cách mua">Blog</a></li>
+                                    <li><a href="faq.html" title="FAQs">Câu hỏi thường gặp</a></li>
+                                    <li><a href="#" title="Thanh toán">Thanh toán</a></li>
+                                    <li><a href="#" title="Shipment">Chuyến hàng</a></li>
+                                    <li><a href="#" title="Đơn hàng của tôi ở đâu?">Đơn hàng của tôi ở đâu?</a></li>
+                                    <li><a href="#" title="Chính sách hoàn trả">Chính sách hoàn trả</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="footer-column pull-left">
-                            <h4>Dành cho khách hàng</h4>
-                                 <ul class="links">
-                                     <li><a href="login.html" title="Tài khoản của bạn">Tài khoản của bạn</a></li>
-                                     <li><a href="#" title="Information">Thông tin</a></li>
-                                     <li><a href="#" title="Addresses">Địa chỉ</a></li>
-                                     <li><a href="#" title="Addresses">Giảm giá</a></li>
-                                     <li><a href="#" title="Lịch sử đơn hàng">Lịch sử đơn hàng</a></li>
-                                     <li><a href="#" title="Theo dõi đơn hàng">Theo dõi đơn hàng</a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                         <div class="col-md-3 col-sm-6">
-                             <div class="footer-column pull-left">
-                                 <h4>Thông tin</h4>
-                                 <ul class="links">
-                                     <li><a href="sitemap.html" title="Sơ đồ trang web">Sơ đồ trang web</a></li>
-                                     <li><a href="#" title="Cụm từ tìm kiếm">Cụm từ tìm kiếm</a></li>
-                                     <li><a href="#" title="Tìm kiếm nâng cao">Tìm kiếm nâng cao</a></li>
-                                     <li><a href="about_us.html" title="Giới thiệu">Giới thiệu</a></li>
-                                     <li><a href="contact_us.html" title="Liên hệ với chúng tôi">Liên hệ với chúng tôi</a></li>
-                                     <li><a href="#" title="Suppliers">Nhà cung cấp</a></li>
-                                 </ul>
-                             </div>
-                         </div>
-                         <div class="col-md-3 col-sm-6">
-                             <h4>liên hệ với chúng tôi</h4>
-                             <div class="contacts-info">
-                                 <địa chỉ>
-                                     <i class="add-icon">&nbsp;</i>123 Main Street, Anytown, <br>
-                                     &nbsp;CA 12345 Hoa Kỳ
-                                 </địa chỉ>
-                                 <div class="phone-footer"><i class="phone-icon">&nbsp;</i> +(012) 365-6531
-                                 </div>
-                                 <div class="email-footer"><i class="email-icon">&nbsp;</i> <a
-                                         href="mailto:abc@magikcommerce.com">abc@magikcommerce.com</a> </div>
-                             </div>
+                                <h4>Dành cho khách hàng</h4>
+                                <ul class="links">
+                                    <li><a href="login.html" title="Tài khoản của bạn">Tài khoản của bạn</a></li>
+                                    <li><a href="#" title="Information">Thông tin</a></li>
+                                    <li><a href="#" title="Addresses">Địa chỉ</a></li>
+                                    <li><a href="#" title="Addresses">Giảm giá</a></li>
+                                    <li><a href="#" title="Lịch sử đơn hàng">Lịch sử đơn hàng</a></li>
+                                    <li><a href="#" title="Theo dõi đơn hàng">Theo dõi đơn hàng</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footer-column pull-left">
+                                <h4>Thông tin</h4>
+                                <ul class="links">
+                                    <li><a href="sitemap.html" title="Sơ đồ trang web">Sơ đồ trang web</a></li>
+                                    <li><a href="#" title="Cụm từ tìm kiếm">Cụm từ tìm kiếm</a></li>
+                                    <li><a href="#" title="Tìm kiếm nâng cao">Tìm kiếm nâng cao</a></li>
+                                    <li><a href="about_us.html" title="Giới thiệu">Giới thiệu</a></li>
+                                    <li><a href="contact_us.html" title="Liên hệ với chúng tôi">Liên hệ với chúng tôi</a></li>
+                                    <li><a href="#" title="Suppliers">Nhà cung cấp</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <h4>liên hệ với chúng tôi</h4>
+                            <div class="contacts-info">
+                                <địa chỉ>
+                                    <i class="add-icon">&nbsp;</i>123 Main Street, Anytown, <br>
+                                    &nbsp;CA 12345 Hoa Kỳ
+                                </địa chỉ>
+                                <div class="phone-footer"><i class="phone-icon">&nbsp;</i> +(012) 365-6531
+                                </div>
+                                <div class="email-footer"><i class="email-icon">&nbsp;</i> <a
+                                        href="mailto:abc@magikcommerce.com">abc@magikcommerce.com</a> </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -513,16 +520,16 @@
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row">
-                    <div class="col-sm-5 col-xs-12 coppyright"> &copy; {{ now()->format('Y') }} Magikc Commerce.
-                             Đã đăng ký Bản quyền.
-                         </div>
-                         <div class="col-sm-7 col-xs-12 company-links">
-                             <ul class="links">
-                                 <li><a href="#" title="Magento Themes">Chủ đề Magento</a></li>
-                                 <li><a href="#" title="Chủ đề cao cấp">Chủ đề cao cấp</a></li>
-                                 <li><a href="#" title="Gói dịch vụ">Gói dịch vụ</a></li>
-                                 <li class="last"><a href="#" title="Tiện ích mở rộng &amp; Plugin">Tiện ích mở rộng
-                                         &amp; Plugin</a></li>
+                        <div class="col-sm-5 col-xs-12 coppyright"> &copy; {{ now()->format('Y') }} Magikc Commerce.
+                            Đã đăng ký Bản quyền.
+                        </div>
+                        <div class="col-sm-7 col-xs-12 company-links">
+                            <ul class="links">
+                                <li><a href="#" title="Magento Themes">Chủ đề Magento</a></li>
+                                <li><a href="#" title="Chủ đề cao cấp">Chủ đề cao cấp</a></li>
+                                <li><a href="#" title="Gói dịch vụ">Gói dịch vụ</a></li>
+                                <li class="last"><a href="#" title="Tiện ích mở rộng &amp; Plugin">Tiện ích mở rộng
+                                        &amp; Plugin</a></li>
                             </ul>
                         </div>
                     </div>
@@ -549,241 +556,241 @@
                 </div>
             </li>
             <li><a href="index.html">Trang chủ</a>
-                 <ul>
-                     <li><a href="index.html">Trang chủ Phiên bản 1</a></li>
-                     <li><a href="../blue/newsletter.html">Trang chủ Phiên bản 2</a></li>
-                     <li><a href="../green/newsletter.html">Trang chủ Phiên bản 3</a></li>
-                     <li><a href="../yellow/newsletter.html">Trang chủ Phiên bản 4</a></li>
-                 </ul>
-             </li>
-             <li><a href="#">Trang</a>
-                 <ul>
-                     <li><a href="grid.html">Lưới</a></li>
-                     <li><a href="list.html">Danh sách</a></li>
-                     <li><a href="product_detail.html">Chi tiết sản phẩm</a></li>
-                     <li><a href="shopping_cart.html">Giỏ hàng</a></li>
-                     <li><a href="checkout.html">Thanh toán</a></li>
-                     <li><a href="wishlist.html">Danh sách yêu thích</a></li>
-                     <li><a href="dashboard.html">Trang tổng quan</a></li>
-                     <li><a href="multiple_addresses.html">Nhiều địa chỉ</a></li>
-                     <li><a href="about_us.html">Giới thiệu về chúng tôi</a></li>
-                     <li><a href="blog.html">Blog</a>
-                         <ul>
-                             <li><a href="blog-detail.html">Chi tiết Blog</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="contact_us.html">Liên hệ với chúng tôi</a></li>
-                     <li><a href="404error.html">Trang Lỗi 404</a></li>
-                 </ul>
-             </li>
-             <li><a href="#">Phụ nữ</a>
-                 <ul>
-                     <li><a href="#">Túi sành điệu</a>
-                         <ul>
-                             <li><a href="grid.html">Túi xách Clutch</a></li>
-                             <li><a href="grid.html">Túi tã</a></li>
-                             <li><a href="grid.html">Túi</a></li>
-                             <li><a href="grid.html">Túi xách Hobo</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Túi đựng vật liệu</a>
-                         <ul>
-                             <li><a href="grid.html">Túi xách đính cườm</a></li>
-                             <li><a href="grid.html">Túi xách vải</a></li>
-                             <li><a href="grid.html">Túi xách</a></li>
-                             <li><a href="grid.html">Túi xách da</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Giày</a>
-                         <ul>
-                             <li><a href="grid.html">Giày bệt</a></li>
-                             <li><a href="grid.html">Dép bệt</a></li>
-                             <li><a href="grid.html">Giày</a></li>
-                             <li><a href="grid.html">Gót chân</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Jwellery</a>
-                         <ul>
-                             <li><a href="grid.html">Vòng tay</a></li>
-                             <li><a href="grid.html">Dây chuyền &amp; Đang chờ</a></li>
-                             <li><a href="grid.html">Mặt dây chuyền</a></li>
-                             <li><a href="grid.html">Ghim &amp; Trâm cài áo</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Váy</a>
-                         <ul>
-                             <li><a href="grid.html">Trang phục giản dị</a></li>
-                             <li><a href="grid.html">Buổi tối</a></li>
-                             <li><a href="grid.html">Nhà thiết kế</a></li>
-                             <li><a href="grid.html">Bữa tiệc</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Đồ bơi</a>
-                         <ul>
-                             <li><a href="grid.html">Đồ bơi</a></li>
-                             <li><a href="grid.html">Quần áo đi biển</a></li>
-                             <li><a href="grid.html">Quần áo</a></li>
-                             <li><a href="grid.html">Bikini</a></li>
-                         </ul>
-                     </li>
+                <ul>
+                    <li><a href="index.html">Trang chủ Phiên bản 1</a></li>
+                    <li><a href="../blue/newsletter.html">Trang chủ Phiên bản 2</a></li>
+                    <li><a href="../green/newsletter.html">Trang chủ Phiên bản 3</a></li>
+                    <li><a href="../yellow/newsletter.html">Trang chủ Phiên bản 4</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Trang</a>
+                <ul>
+                    <li><a href="grid.html">Lưới</a></li>
+                    <li><a href="list.html">Danh sách</a></li>
+                    <li><a href="product_detail.html">Chi tiết sản phẩm</a></li>
+                    <li><a href="shopping_cart.html">Giỏ hàng</a></li>
+                    <li><a href="checkout.html">Thanh toán</a></li>
+                    <li><a href="wishlist.html">Danh sách yêu thích</a></li>
+                    <li><a href="dashboard.html">Trang tổng quan</a></li>
+                    <li><a href="multiple_addresses.html">Nhiều địa chỉ</a></li>
+                    <li><a href="about_us.html">Giới thiệu về chúng tôi</a></li>
+                    <li><a href="blog.html">Blog</a>
+                        <ul>
+                            <li><a href="blog-detail.html">Chi tiết Blog</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact_us.html">Liên hệ với chúng tôi</a></li>
+                    <li><a href="404error.html">Trang Lỗi 404</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Phụ nữ</a>
+                <ul>
+                    <li><a href="#">Túi sành điệu</a>
+                        <ul>
+                            <li><a href="grid.html">Túi xách Clutch</a></li>
+                            <li><a href="grid.html">Túi tã</a></li>
+                            <li><a href="grid.html">Túi</a></li>
+                            <li><a href="grid.html">Túi xách Hobo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Túi đựng vật liệu</a>
+                        <ul>
+                            <li><a href="grid.html">Túi xách đính cườm</a></li>
+                            <li><a href="grid.html">Túi xách vải</a></li>
+                            <li><a href="grid.html">Túi xách</a></li>
+                            <li><a href="grid.html">Túi xách da</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Giày</a>
+                        <ul>
+                            <li><a href="grid.html">Giày bệt</a></li>
+                            <li><a href="grid.html">Dép bệt</a></li>
+                            <li><a href="grid.html">Giày</a></li>
+                            <li><a href="grid.html">Gót chân</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Jwellery</a>
+                        <ul>
+                            <li><a href="grid.html">Vòng tay</a></li>
+                            <li><a href="grid.html">Dây chuyền &amp; Đang chờ</a></li>
+                            <li><a href="grid.html">Mặt dây chuyền</a></li>
+                            <li><a href="grid.html">Ghim &amp; Trâm cài áo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Váy</a>
+                        <ul>
+                            <li><a href="grid.html">Trang phục giản dị</a></li>
+                            <li><a href="grid.html">Buổi tối</a></li>
+                            <li><a href="grid.html">Nhà thiết kế</a></li>
+                            <li><a href="grid.html">Bữa tiệc</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Đồ bơi</a>
+                        <ul>
+                            <li><a href="grid.html">Đồ bơi</a></li>
+                            <li><a href="grid.html">Quần áo đi biển</a></li>
+                            <li><a href="grid.html">Quần áo</a></li>
+                            <li><a href="grid.html">Bikini</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li><a href="grid.html">Đàn ông</a>
-                 <ul>
-                     <li><a href="grid.html">Giày</a>
-                         <ul class="level1">
-                             <li class="level2"><a href="grid.html">Giày thể thao</a></li>
-                             <li class="level2"><a href="grid.html">Giày thường</a></li>
-                             <li class="level2"><a href="grid.html">Giày da</a></li>
-                             <li class="level2"><a href="grid.html">giày vải</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Váy</a>
-                         <ul class="level1">
-                             <li class="level2"><a href="grid.html">Trang phục thường ngày</a></li>
-                             <li class="level2"><a href="grid.html">Buổi tối</a></li>
-                             <li class="level2"><a href="grid.html">Nhà thiết kế</a></li>
-                             <li class="level2"><a href="grid.html">Bữa tiệc</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Áo khoác</a>
-                         <ul class="level1">
-                             <li class="level2"><a href="grid.html">Áo khoác</a></li>
-                             <li class="level2"><a href="grid.html">Áo khoác lịch sự</a></li>
-                             <li class="level2"><a href="grid.html">Áo khoác da</a></li>
-                             <li class="level2"><a href="grid.html">Áo blazer</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="#.html">Đồng hồ</a>
-                         <ul class="level1">
-                             <li class="level2"><a href="grid.html">Fasttrack</a></li>
-                             <li class="level2"><a href="grid.html">Casio</a></li>
-                             <li class="level2"><a href="grid.html">Titan</a></li>
-                             <li class="level2"><a href="grid.html">Tommy-Hilfiger</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Kính râm</a>
-                         <ul class="level1">
-                             <li class="level2"><a href="grid.html">Ray Ban</a></li>
-                             <li class="level2"><a href="grid.html">Fasttrack</a></li>
-                             <li class="level2"><a href="grid.html">Cảnh sát</a></li>
-                             <li class="level2"><a href="grid.html">Oakley</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Phụ kiện</a>
-                         <ul class="level1">
-                             <li class="level2"><a href="grid.html">Ba lô</a></li>
-                             <li class="level2"><a href="grid.html">Ví</a></li>
-                             <li class="level2"><a href="grid.html">Túi đựng máy tính xách tay</a></li>
-                             <li class="level2"><a href="grid.html">Thắt lưng</a></li>
-                         </ul>
+                <ul>
+                    <li><a href="grid.html">Giày</a>
+                        <ul class="level1">
+                            <li class="level2"><a href="grid.html">Giày thể thao</a></li>
+                            <li class="level2"><a href="grid.html">Giày thường</a></li>
+                            <li class="level2"><a href="grid.html">Giày da</a></li>
+                            <li class="level2"><a href="grid.html">giày vải</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Váy</a>
+                        <ul class="level1">
+                            <li class="level2"><a href="grid.html">Trang phục thường ngày</a></li>
+                            <li class="level2"><a href="grid.html">Buổi tối</a></li>
+                            <li class="level2"><a href="grid.html">Nhà thiết kế</a></li>
+                            <li class="level2"><a href="grid.html">Bữa tiệc</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Áo khoác</a>
+                        <ul class="level1">
+                            <li class="level2"><a href="grid.html">Áo khoác</a></li>
+                            <li class="level2"><a href="grid.html">Áo khoác lịch sự</a></li>
+                            <li class="level2"><a href="grid.html">Áo khoác da</a></li>
+                            <li class="level2"><a href="grid.html">Áo blazer</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#.html">Đồng hồ</a>
+                        <ul class="level1">
+                            <li class="level2"><a href="grid.html">Fasttrack</a></li>
+                            <li class="level2"><a href="grid.html">Casio</a></li>
+                            <li class="level2"><a href="grid.html">Titan</a></li>
+                            <li class="level2"><a href="grid.html">Tommy-Hilfiger</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Kính râm</a>
+                        <ul class="level1">
+                            <li class="level2"><a href="grid.html">Ray Ban</a></li>
+                            <li class="level2"><a href="grid.html">Fasttrack</a></li>
+                            <li class="level2"><a href="grid.html">Cảnh sát</a></li>
+                            <li class="level2"><a href="grid.html">Oakley</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Phụ kiện</a>
+                        <ul class="level1">
+                            <li class="level2"><a href="grid.html">Ba lô</a></li>
+                            <li class="level2"><a href="grid.html">Ví</a></li>
+                            <li class="level2"><a href="grid.html">Túi đựng máy tính xách tay</a></li>
+                            <li class="level2"><a href="grid.html">Thắt lưng</a></li>
+                        </ul>
                     </li>
                 </ul>
             </li>
             <li><a href="grid.html">Điện tử</a>
-                 <ul>
-                     <li><a href="grid.html"><span>Điện thoại di động</span></a>
-                         <ul>
-                             <li><a href="grid.html"><span>Samsung</span></a></li>
-                             <li><a href="grid.html"><span>Nokia</span></a></li>
-                             <li><a href="grid.html"><span>iPhone</span></a></li>
-                             <li><a href="grid.html"><span>Sony</span></a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html"><span>Phụ kiện</span></a>
-                         <ul>
-                             <li><a href="grid.html"><span>Thẻ nhớ di động</span></a></li>
-                             <li><a href="grid.html"><span>Trường hợp &amp; Bìa</span></a></li>
-                             <li><a href="grid.html"><span>Tai nghe di động</span></a></li>
-                             <li><a href="grid.html"><span>Tai nghe Bluetooth</span></a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html"><span>Máy ảnh</span></a>
-                         <ul>
-                             <li><a href="grid.html"><span>Máy quay</span></a></li>
-                             <li><a href="grid.html"><span>Điểm &amp; Bắn</span></a></li>
-                             <li><a href="grid.html"><span>SLR kỹ thuật số</span></a></li>
-                             <li><a href="grid.html"><span>Phụ kiện máy ảnh</span></a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html"><span>Âm thanh &amp; Video</span></a>
-                         <ul>
-                             <li><a href="grid.html"><span>Máy nghe nhạc MP3</span></a></li>
-                             <li><a href="grid.html"><span>iPod</span></a></li>
-                             <li><a href="grid.html"><span>Loa</span></a></li>
-                             <li><a href="grid.html"><span>Trình phát video</span></a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html"><span>Máy tính</span></a>
-                         <ul>
-                             <li><a href="grid.html"><span>Đĩa cứng ngoài</span></a></li>
-                             <li><a href="grid.html"><span>Ổ đĩa treo</span></a></li>
-                             <li><a href="grid.html"><span>Tai nghe</span></a></li>
-                             <li><a href="grid.html"><span>Các thành phần PC</span></a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html"><span>Thiết bị gia dụng</span></a>
-                         <ul>
-                             <li><a href="grid.html"><span>Máy hút bụi</span></a></li>
-                             <li><a href="grid.html"><span>Chiếu sáng trong nhà</span></a></li>
-                             <li><a href="grid.html"><span>Dụng cụ nhà bếp</span></a></li>
-                             <li><a href="grid.html"><span>Máy lọc nước</span></a></li>
-                         </ul>
+                <ul>
+                    <li><a href="grid.html"><span>Điện thoại di động</span></a>
+                        <ul>
+                            <li><a href="grid.html"><span>Samsung</span></a></li>
+                            <li><a href="grid.html"><span>Nokia</span></a></li>
+                            <li><a href="grid.html"><span>iPhone</span></a></li>
+                            <li><a href="grid.html"><span>Sony</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html"><span>Phụ kiện</span></a>
+                        <ul>
+                            <li><a href="grid.html"><span>Thẻ nhớ di động</span></a></li>
+                            <li><a href="grid.html"><span>Trường hợp &amp; Bìa</span></a></li>
+                            <li><a href="grid.html"><span>Tai nghe di động</span></a></li>
+                            <li><a href="grid.html"><span>Tai nghe Bluetooth</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html"><span>Máy ảnh</span></a>
+                        <ul>
+                            <li><a href="grid.html"><span>Máy quay</span></a></li>
+                            <li><a href="grid.html"><span>Điểm &amp; Bắn</span></a></li>
+                            <li><a href="grid.html"><span>SLR kỹ thuật số</span></a></li>
+                            <li><a href="grid.html"><span>Phụ kiện máy ảnh</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html"><span>Âm thanh &amp; Video</span></a>
+                        <ul>
+                            <li><a href="grid.html"><span>Máy nghe nhạc MP3</span></a></li>
+                            <li><a href="grid.html"><span>iPod</span></a></li>
+                            <li><a href="grid.html"><span>Loa</span></a></li>
+                            <li><a href="grid.html"><span>Trình phát video</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html"><span>Máy tính</span></a>
+                        <ul>
+                            <li><a href="grid.html"><span>Đĩa cứng ngoài</span></a></li>
+                            <li><a href="grid.html"><span>Ổ đĩa treo</span></a></li>
+                            <li><a href="grid.html"><span>Tai nghe</span></a></li>
+                            <li><a href="grid.html"><span>Các thành phần PC</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html"><span>Thiết bị gia dụng</span></a>
+                        <ul>
+                            <li><a href="grid.html"><span>Máy hút bụi</span></a></li>
+                            <li><a href="grid.html"><span>Chiếu sáng trong nhà</span></a></li>
+                            <li><a href="grid.html"><span>Dụng cụ nhà bếp</span></a></li>
+                            <li><a href="grid.html"><span>Máy lọc nước</span></a></li>
+                        </ul>
                     </li>
                 </ul>
             </li>
             <li><a href="grid.html">Đồ nội thất</a>
-                 <ul>
-                     <li><a href="grid.html">Phòng khách</a>
-                         <ul>
-                             <li><a href="grid.html">Giá đỡ &amp; Tủ</a></li>
-                             <li><a href="grid.html">Ghế sofa</a></li>
-                             <li><a href="grid.html">Ghế</a></li>
-                             <li><a href="grid.html">Bảng</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Ăn uống &amp; thanh</a>
-                         <ul>
-                             <li><a href="grid.html">Bộ bàn ăn</a></li>
-                             <li><a href="grid.html">Xe đẩy phục vụ</a></li>
-                             <li><a href="grid.html">Quầy bar</a></li>
-                             <li><a href="grid.html">Tủ ăn</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Phòng ngủ</a>
-                         <ul>
-                             <li><a href="grid.html">Giường</a></li>
-                             <li><a href="grid.html">Tủ ngăn kéo</a></li>
-                             <li><a href="grid.html">Tủ quần áo &amp; Almirahs</a></li>
-                             <li><a href="grid.html">Bàn ngủ</a></li>
-                         </ul>
-                     </li>
-                     <li><a href="grid.html">Nhà bếp</a>
-                         <ul>
-                             <li><a href="grid.html">Giá đỡ nhà bếp</a></li>
-                             <li><a href="grid.html">Chất độn nhà bếp</a></li>
-                             <li><a href="grid.html">Đơn vị tường</a></li>
-                             <li><a href="grid.html">Ghế &amp; Ghế đẩu</a></li>
-                         </ul>
-                     </li>
-                 </ul>
-             </li>
-             <li><a href="grid.html">Trẻ em</a></li>
-             <li><a href="contact-us.html">Liên hệ với chúng tôi</a></li>
-         </ul>
-         <div class="top-links">
-             <ul class="links">
-                 <li><a title="My Account" href="login.html">Tài khoản của tôi</a></li>
-                 <li><a title="Wishlist" href="wishlist.html">Danh sách mong muốn</a></li>
-                 <li><a title="Checkout" href="checkout.html">Thanh toán</a></li>
-                 <li><a title="Blog" href="blog.html"><span>Blog</span></a></li>
-                 <li class="last"><a title="Login" href="login.html"><span>Đăng nhập</span></a></li>
-             </ul>
-         </div>
+                <ul>
+                    <li><a href="grid.html">Phòng khách</a>
+                        <ul>
+                            <li><a href="grid.html">Giá đỡ &amp; Tủ</a></li>
+                            <li><a href="grid.html">Ghế sofa</a></li>
+                            <li><a href="grid.html">Ghế</a></li>
+                            <li><a href="grid.html">Bảng</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Ăn uống &amp; thanh</a>
+                        <ul>
+                            <li><a href="grid.html">Bộ bàn ăn</a></li>
+                            <li><a href="grid.html">Xe đẩy phục vụ</a></li>
+                            <li><a href="grid.html">Quầy bar</a></li>
+                            <li><a href="grid.html">Tủ ăn</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Phòng ngủ</a>
+                        <ul>
+                            <li><a href="grid.html">Giường</a></li>
+                            <li><a href="grid.html">Tủ ngăn kéo</a></li>
+                            <li><a href="grid.html">Tủ quần áo &amp; Almirahs</a></li>
+                            <li><a href="grid.html">Bàn ngủ</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="grid.html">Nhà bếp</a>
+                        <ul>
+                            <li><a href="grid.html">Giá đỡ nhà bếp</a></li>
+                            <li><a href="grid.html">Chất độn nhà bếp</a></li>
+                            <li><a href="grid.html">Đơn vị tường</a></li>
+                            <li><a href="grid.html">Ghế &amp; Ghế đẩu</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="grid.html">Trẻ em</a></li>
+            <li><a href="contact-us.html">Liên hệ với chúng tôi</a></li>
+        </ul>
+        <div class="top-links">
+            <ul class="links">
+                <li><a title="My Account" href="login.html">Tài khoản của tôi</a></li>
+                <li><a title="Wishlist" href="wishlist.html">Danh sách mong muốn</a></li>
+                <li><a title="Checkout" href="checkout.html">Thanh toán</a></li>
+                <li><a title="Blog" href="blog.html"><span>Blog</span></a></li>
+                <li class="last"><a title="Login" href="login.html"><span>Đăng nhập</span></a></li>
+            </ul>
+        </div>
     </div>
     @foreach ($product_modal as $pro_show)
     @php
-        $gallery_show = App\Gallery::where('pro_id',$pro_show->product_id)->get();
+    $gallery_show = App\Gallery::where('pro_id',$pro_show->product_id)->get();
     @endphp
     <!-- The modal -->
     <div class="modal fade bd-example-modal-lg" id="quickview_product{{ $pro_show->product_id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
@@ -809,7 +816,7 @@
                                                     <img id="product-zoom"
                                                         src="{{ asset('uploads/product/'.$pro_show->product_image) }}"
                                                         data-zoom-image="{{ asset('uploads/product/'.$pro_show->product_image) }}"
-                                                        alt="{{ $pro_show->product_name }}" width="274.33px" height="274.33px"/>
+                                                        alt="{{ $pro_show->product_name }}" width="274.33px" height="274.33px" />
                                                 </div>
                                                 <div class="more-views">
                                                     <div class="slider-items-products">
@@ -854,14 +861,14 @@
                                                 <div class="price-box">
                                                     @if ($pro_show->product_price_sale != 0)
                                                     <p class="special-price"> <span class="price-label">Special
-                                                        Price</span> <span class="price"> {{ number_format($pro_show->product_price_sale) }} vnđ</span>
+                                                            Price</span> <span class="price"> {{ number_format($pro_show->product_price_sale) }} vnđ</span>
                                                     </p>
                                                     <p class="old-price"> <span class="price-label">Regular
                                                             Price:</span> <span class="price"> {{ number_format($pro_show->product_price) }} vnđ</span>
                                                     </p>
                                                     @else
                                                     <p class="special-price"> <span class="price-label">Special
-                                                        Price</span> <span class="price"> {{ number_format($pro_show->product_price) }} vnđ</span>
+                                                            Price</span> <span class="price"> {{ number_format($pro_show->product_price) }} vnđ</span>
                                                     </p>
                                                     @endif
 
@@ -888,7 +895,7 @@
                                                         </div>
                                                     </div>
                                                     <button class="button btn-cart" title="Add to Cart"
-                                                    type="submit">Thêm vào giỏ hàng</button>
+                                                        type="submit">Thêm vào giỏ hàng</button>
                                                 </div>
 
                                             </div>
@@ -901,15 +908,15 @@
                                                     <li>
                                                         @if (Auth::user())
                                                         @php
-                                                            $check_wish = App\Wishlist::where('user_id',Auth::id())->where('pro_id',$pro_show->product_id)->first();
+                                                        $check_wish = App\Wishlist::where('user_id',Auth::id())->where('pro_id',$pro_show->product_id)->first();
                                                         @endphp
-                                                            @if ($check_wish)
-                                                            <a class="link-wishlist add_Wishlist wishcolor"
+                                                        @if ($check_wish)
+                                                        <a class="link-wishlist add_Wishlist wishcolor"
                                                             id="{{ $pro_show->product_id }}"><span>Thêm vào danh sách yêu thích</span></a>
-                                                            @else
-                                                            <a class="link-wishlist add_Wishlist"
+                                                        @else
+                                                        <a class="link-wishlist add_Wishlist"
                                                             id="{{ $pro_show->product_id }}"><span>Thêm vào danh sách yêu thích</span></a>
-                                                            @endif
+                                                        @endif
                                                         @else
                                                         <a class="link-wishlist"
                                                             href="{{ route('login.index') }}"><span>Thêm vào danh sách yêu thích</span></a>
@@ -938,7 +945,9 @@
                                             </div>
 
                                             <ul class="shipping-pro">
-                                            <li>FREESHIP toàn quốc</li> <li>Đổi trả trong 30 ngày</li> <li>Giảm giá cho thành viên</li>
+                                                <li>FREESHIP toàn quốc</li>
+                                                <li>Đổi trả trong 30 ngày</li>
+                                                <li>Giảm giá cho thành viên</li>
                                             </ul>
                                         </div>
                                     </form>
@@ -954,213 +963,234 @@
         </div>
     </div>
     @endforeach
-        <style>
-            .wishcolor {
-                color: red !important;
-            }
-            .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover{
-                background-color: #1f2fc0 !important;
-            }
-            .typeahead {
-                width: 100%;
-            }
-        </style>
+    <style>
+        .wishcolor {
+            color: red !important;
+        }
 
-        <!-- JavaScript -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
-        <script src="{{ asset('frontend/js/revslider.js') }} "></script>
-        <script src="{{ asset('frontend/js/common.js') }} "></script>
-        <!-- Toastr script -->
-        <script src="{{ asset('backend/js/plugins/toastr/toastr.min.js') }}"></script>
+        .dropdown-menu>.active>a,
+        .dropdown-menu>.active>a:focus,
+        .dropdown-menu>.active>a:hover {
+            background-color: #1f2fc0 !important;
+        }
 
-        @if (Session::get('message'))
-            toastr.success(Session::get('message'), 'Notification');
+        .typeahead {
+            width: 100%;
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script src="{{ asset('frontend/js/revslider.js') }} "></script>
+    <script src="{{ asset('frontend/js/common.js') }} "></script>
+    <!-- Toastr script -->
+    <script src="{{ asset('backend/js/plugins/toastr/toastr.min.js') }}"></script>
+
+    @if (Session::get('message'))
+    toastr.success(Session::get('message'), 'Notification');
+    @endif
+    @if (Session::get('message_err'))
+    toastr.error(Session::get('message_err'), 'Notification');
+    @endif
+    <script>
+        function loadSidebar() {
+            $.ajax({
+                type: 'get',
+                url: '{{ route('
+                home.create ') }}',
+                dataType: 'json',
+                success: function(response) {
+                    $('#countCart').html(response.countData);
+                    $('#cart-sidebar').html(response.data);
+                }
+            });
+        }
+
+        function loadShopping() {
+            $.ajax({
+                type: 'get',
+                url: '{{ route('
+                cart.index ') }}',
+                dataType: 'json',
+                success: function(response) {
+                    $('#loadShoppingcart').html(response.data);
+                    $('#cartTotal').html(response.dataTotal);
+                    $('#delButtonall').html(response.dataDel);
+                }
+            });
+        }
+
+        function loadCompare() {
+            $.ajax({
+                type: 'get',
+                url: '{{ route('
+                product - detail.create ') }}',
+                dataType: 'json',
+                success: function(response) {
+                    $('#loadare').html(response.data);
+                }
+            });
+        }
+        @if(Session::get('compare'))
+        @foreach(Session::get('compare') as $com)
+        var id_session = {
+            {
+                $com['id_pro']
+            }
+        };
+
+        if (id_session) {
+            $('a[data-compare_id=' + id_session + ']').addClass('wishcolor');
+        } else {
+            $('a[data-compare_id=' + id_session + ']').removeClass('wishcolor');
+        }
+        @endforeach
         @endif
-        @if (Session::get('message_err'))
-            toastr.error(Session::get('message_err'), 'Notification');
-        @endif
-        <script>
-            function loadSidebar() {
-                $.ajax({
-                    type: 'get',
-                    url: '{{ route('home.create') }}',
-                    dataType: 'json',
-                    success: function(response) {
-                        $('#countCart').html(response.countData);
-                        $('#cart-sidebar').html(response.data);
-                    }
-                });
-            }
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+            });
+            loadSidebar();
+            // Add Cart
+            $(document).on('click', '.add_cart', function(e) {
+                e.preventDefault();
+                var id_procart = $(this).data('id_pro');
 
-            function loadShopping() {
                 $.ajax({
-                    type: 'get',
-                    url: '{{ route('cart.index') }}',
-                    dataType: 'json',
-                    success: function(response) {
-                        $('#loadShoppingcart').html(response.data);
-                        $('#cartTotal').html(response.dataTotal);
-                        $('#delButtonall').html(response.dataDel);
-                    }
-                });
-            }
-
-            function loadCompare() {
-                $.ajax({
-                    type: 'get',
-                    url: '{{ route('product-detail.create') }}',
-                    dataType: 'json',
-                    success: function(response) {
-                        $('#loadare').html(response.data);
-                    }
-                });
-            }
-            @if (Session::get('compare'))
-                @foreach (Session::get('compare') as $com)
-                    var id_session = {{ $com['id_pro'] }};
-
-                    if(id_session){
-                    $('a[data-compare_id='+id_session+']').addClass('wishcolor');
-                    }else{
-                    $('a[data-compare_id='+id_session+']').removeClass('wishcolor');
-                    }
-                @endforeach
-            @endif
-            $(document).ready(function() {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    type: 'post',
+                    url: '{{ route('
+                    home.store ') }}',
+                    data: {
+                        id_procart: id_procart
                     },
-                });
-                loadSidebar();
-                // Add Cart
-                $(document).on('click', '.add_cart', function(e) {
-                    e.preventDefault();
-                    var id_procart = $(this).data('id_pro');
-
-                    $.ajax({
-                        type: 'post',
-                        url: '{{ route('home.store') }}',
-                        data: {
-                            id_procart: id_procart
-                        },
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.status == 200) {
-                                loadSidebar();
-                                loadShopping();
-                                toastr.success(response.message, 'Notification');
-                            } else {
-                                toastr.error(response.message, 'Notification');
-                            }
-                        }
-                    });
-                });
-                // Delete Cart Sidebar Ajax
-                $(document).on('click', '.remove_cart_rowId', function(e) {
-                    var href_rowid = $(this).data('href_rowid');
-
-                    $.ajax({
-                        type: 'get',
-                        url: href_rowid,
-                        success: function(response) {
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status == 200) {
                             loadSidebar();
                             loadShopping();
+                            toastr.success(response.message, 'Notification');
+                        } else {
+                            toastr.error(response.message, 'Notification');
                         }
-                    });
+                    }
                 });
-                // Add Wishlist
-                $(document).on('click', '.add_Wishlist', function(e) {
-                    e.preventDefault();
-                    var id = $(this).attr('id');
+            });
+            // Delete Cart Sidebar Ajax
+            $(document).on('click', '.remove_cart_rowId', function(e) {
+                var href_rowid = $(this).data('href_rowid');
 
-                    $.ajax({
-                        type: 'post',
-                        url: '{{ route('wishlist.store') }}',
-                        data: {
-                            id: id
-                        },
-                        success: function(response) {
-                            if (response.action == 'Add') {
-                                $('a[id=' + id + ']').addClass('wishcolor');
-                                toastr.success(response.message, 'Notification');
-                            } else {
-                                $('a[id=' + id + ']').removeClass('wishcolor');
-                            }
-                        }
-                    });
+                $.ajax({
+                    type: 'get',
+                    url: href_rowid,
+                    success: function(response) {
+                        loadSidebar();
+                        loadShopping();
+                    }
                 });
-                // Add Compare
-                $(document).on('click', '.add_compare', function(e) {
-                    e.preventDefault();
-                    var id = $(this).data('compare_id');
+            });
+            // Add Wishlist
+            $(document).on('click', '.add_Wishlist', function(e) {
+                e.preventDefault();
+                var id = $(this).attr('id');
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ route('
+                    wishlist.store ') }}',
+                    data: {
+                        id: id
+                    },
+                    success: function(response) {
+                        if (response.action == 'Add') {
+                            $('a[id=' + id + ']').addClass('wishcolor');
+                            toastr.success(response.message, 'Notification');
+                        } else {
+                            $('a[id=' + id + ']').removeClass('wishcolor');
+                        }
+                    }
+                });
+            });
+            // Add Compare
+            $(document).on('click', '.add_compare', function(e) {
+                e.preventDefault();
+                var id = $(this).data('compare_id');
+
+                $.ajax({
+                    type: 'get',
+                    url: '{{ route('
+                    wishlist.create ') }}',
+                    data: {
+                        id: id
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.action == 'Add') {
+                            $('a[data-compare_id=' + id + ']').addClass('wishcolor');
+                            toastr.success(response.message, 'Notification');
+                            loadCompare()
+                        } else {
+                            $('a[data-compare_id=' + id + ']').removeClass('wishcolor');
+                            loadCompare()
+                        }
+                    }
+                });
+            });
+            // Add Cart Quickview
+            @foreach($product_modal as $pro_show)
+            $(document).on('submit', '#product_addtocart_form_quickview{{$pro_show->product_id}}', function(e) {
+                e.preventDefault();
+                var id_pro = {
+                    {
+                        $pro_show - > product_id
+                    }
+                };
+                var qtycart = $('#qty{{$pro_show->product_id}}').val();
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ route('
+                    cart.store ') }}',
+                    data: {
+                        qtycart: qtycart,
+                        id_pro: id_pro
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        loadSidebar();
+                        toastr.success(response.message, 'Notification');
+                    }
+                });
+            });
+            @endforeach
+            // Autocomplete Search
+            $('#search').typeahead({
+
+                source: function(query, process) {
 
                     $.ajax({
                         type: 'get',
-                        url: '{{ route('wishlist.create') }}',
+                        url: "{{ route('home') }}",
                         data: {
-                            id: id
+                            query: query
                         },
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.action == 'Add') {
-                                $('a[data-compare_id=' + id + ']').addClass('wishcolor');
-                                toastr.success(response.message, 'Notification');
-                                loadCompare()
-                            } else {
-                                $('a[data-compare_id=' + id + ']').removeClass('wishcolor');
-                                loadCompare()
-                            }
+                        dataType: 'JSON',
+                        success: function(data) {
+                            process(data);
                         }
                     });
-                });
-                // Add Cart Quickview
-                @foreach ($product_modal as $pro_show)
-                $(document).on('submit','#product_addtocart_form_quickview{{$pro_show->product_id}}', function(e){
-                    e.preventDefault();
-                    var id_pro = {{$pro_show->product_id}};
-                    var qtycart = $('#qty{{$pro_show->product_id}}').val();
 
-                    $.ajax({
-                        type: 'post',
-                        url: '{{ route('cart.store') }}',
-                        data: {
-                            qtycart:qtycart,
-                            id_pro:id_pro
-                        },
-                        dataType: 'json',
-                        success:function(response){
-                            loadSidebar();
-                            toastr.success(response.message, 'Notification');
-                        }
-                    });
-                });
-                @endforeach
-                // Autocomplete Search
-                $('#search').typeahead({
-
-                    source: function(query, process){
-
-                        $.ajax({
-                            type: 'get',
-                            url: "{{ route('home') }}",
-                            data: {query:query},
-                            dataType: 'JSON',
-                            success:function(data){
-                                process(data);
-                            }
-                        });
-
-                    }
-
-                });
+                }
 
             });
-        </script>
-        @yield('js')
+
+        });
+    </script>
+    @yield('js')
 
 </body>
 

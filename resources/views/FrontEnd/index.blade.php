@@ -3,6 +3,12 @@
   Home
 @endsection
 @section('content')
+@if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
+
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-md-4 col-sm-3 hidden-xs">

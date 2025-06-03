@@ -139,7 +139,7 @@
                                                             </small>Quay lại Giỏ hàng</a>
                                                         <button class="button btn-continue"
                                                             title="Tiếp tục Điền thông tin Giao hàng"
-                                                            type="submit"><span>Tiếp tục Điền thông tin Giao hàng</span>
+                                                            type="submit"><span>Đặt hàng</span>
                                                         </button>
                                                         <div class="btnpaypal display"
                                                             style="height:33px;overflow-y: hidden; float: right;"
