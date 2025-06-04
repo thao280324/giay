@@ -10,7 +10,7 @@ use App\Products;
 use App\Gallery;
 use App\Order;
 
-class RemoveAllController extends Controller
+class RemoveController extends Controller
 {
     /**
      * Display a listing of the resource.

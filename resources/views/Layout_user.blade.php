@@ -57,15 +57,15 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation">
                                         <a href="#"><img src="{{ asset('frontend/images/english.png') }} "
-                                                alt="English">English</a>
+                                                alt="English">Việt Nam</a>
                                     </li>
                                     <li role="presentation">
                                         <a href="#"><img src="{{ asset('frontend/images/francais.png') }} "
-                                                alt="French">French</a>
+                                                alt="French">Pháp</a>
                                     </li>
                                     <li role="presentation">
                                         <a href="#"><img src="{{ asset('frontend/images/german.png') }} "
-                                                alt="German">German</a>
+                                                alt="German">Đức</a>
                                     </li>
                                 </ul>
                             </div>
@@ -75,13 +75,13 @@
                                     data-target="#" class="block-currency dropdown-toggle" href="#"> USD <span
                                         class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li role="presentation"><a href="#">$ - Dollar</a></li>
+                                    <li role="presentation"><a href="#">VNĐ</a></li>
                                     <li role="presentation"><a href="#">£ - Pound</a></li>
                                     <li role="presentation"><a href="#">€ - Euro</a></li>
                                 </ul>
                             </div>
                             <!-- End Header Currency -->
-                            <div class="welcome-msg">trang web mua sắm</div>
+                            <div class="welcome-msg">Trang web mua sắm</div>
                         </div>
                         <!-- Header Top Links -->
                         <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 pull-right hidden-xs">
@@ -89,24 +89,24 @@
                                 <div class="links">
                                     @if (Auth::user())
                                     <div class="myaccount">
-                                        <a title="My Account" href=""><span class="hidden-xs">My
-                                                Account</span></a>
+                                        <a title="My Account" href=""><span class="hidden-xs">
+                                                Tài khoản</span></a>
                                     </div>
                                     @endif
                                     <div class="demo"><a title="Blog" href=""><span
-                                                class="hidden-xs">Blog</span></a> </div>
+                                                class="hidden-xs">Bài viết</span></a> </div>
                                     <!-- Header Company -->
                                     <div class="dropdown block-company-wrapper hidden-xs">
                                         <a role="button" data-toggle="dropdown" data-target="#"
-                                            class="block-company dropdown-toggle" href="#"> Company <span
+                                            class="block-company dropdown-toggle" href="#"> Doanh nghiệp <span
                                                 class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li role="presentation"><a href=""> About Us </a></li>
-                                            <li role="presentation"><a href="{{ route('wishlist.create') }}"> Compare </a></li>
+                                            <li role="presentation"><a href="{{ route('wishlist.create') }}"> So sánh </a></li>
                                             @if (Auth::user())
-                                            <li role="presentation"><a href="{{ route('wishlist.index') }}"> Wishlist </a></li>
-                                            <li role="presentation"><a href="{{ route('history.index') }}"> History Order </a></li>
+                                            <li role="presentation"><a href="{{ route('wishlist.index') }}"> Yêu thích </a></li>
+                                            <li role="presentation"><a href="{{ route('history.index') }}"> Lịch sử mua hàng</a></li>
                                             @endif
                                         </ul>
                                     </div>
@@ -114,11 +114,11 @@
                                     <div class="login">
                                         @if (!Auth::user())
                                         <a href="{{ route('login.index') }}">
-                                            <span class="hidden-xs">Log In</span>
+                                            <span class="hidden-xs">Đăng nhập</span>
                                         </a>
                                         @else
                                         <a href="{{ route('logout.index') }}">
-                                            <span class="hidden-xs">Log Out</span>
+                                            <span class="hidden-xs">Đăng xuất</span>
                                         </a>
                                         @endif
                                     </div>
@@ -158,8 +158,11 @@
                             <!-- Top Cart -->
                             <div class="mini-cart">
                                 <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle">
-                                    <a href="{{ route('cart.index') }}"><span class="price hidden-xs">Shopping
-                                            Cart</span>
+                                    <a href="{{ route('cart.index') }}"><span class="price hidden-xs">Giỏ hàng
+                                            <span class="price-wrapper">
+                                                <span class="price" id="totalCart">0</span>
+                                            </span>
+                                        </span>
                                         <span class="cart_count hidden-xs" id="countCart"></span></a>
                                 </div>
                                 <div>
@@ -178,8 +181,9 @@
                                                     href="{{ route('login.index') }}"><span>Checkout</span></a>
                                                 @endif
                                             </button>
-                                            <a href="{{ route('cart.index') }}" class="view-cart"><span>View
-                                                    Cart</span></a>
+                                            <a href="{{ route('cart.index') }}" class="view-cart"><span>Xem giỏ hàng
+                                                    <i class="fa fa-arrow-circle-right"></i>
+                                                </span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -470,7 +474,7 @@
                                 <div class="phone-footer"><i class="phone-icon">&nbsp;</i> +(012) 365-6531
                                 </div>
                                 <div class="email-footer"><i class="email-icon">&nbsp;</i> <a
-                                        href="mailto:abc@magikcommerce.com">abc@magikcommerce.com</a> </div>
+                                        href="mailto:abc@magikcommerce.com">laptrinhweb@gmail.com</a> </div>
                             </div>
                         </div>
                     </div>
@@ -520,7 +524,7 @@
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-5 col-xs-12 coppyright"> &copy; {{ now()->format('Y') }} Magikc Commerce.
+                        <div class="col-sm-5 col-xs-12 coppyright"> &copy; {{ now()->format('Y') }} Nhom13.
                             Đã đăng ký Bản quyền.
                         </div>
                         <div class="col-sm-7 col-xs-12 company-links">
